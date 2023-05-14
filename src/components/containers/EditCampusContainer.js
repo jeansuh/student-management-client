@@ -54,21 +54,24 @@ class EditCampusContainer extends Component {
 		let updatedCampus = await this.props.editCampus(campus);
 
 		this.setState({
-			// name: "",
-			// address: "",
-			// description: "",
+			name: "",
+			address: "",
+			description: "",
 			redirect: true,
 			redirectId: campus.id
 		})
 
 	}
 
-	componentWillUnmount() {
-		this.setState({redirect: false, redirectId: null});
+	componentWillMount(){
+		this.setState({
+			name: "",
+			address: "",
+			description: "",
+			redirect: false, redirectId: null});
 	}
 
 	render(){
-
 		if(this.state.redirect){
 			return(
 				<Redirect to = {`/campus/${this.state.redirectId}`}/>
@@ -80,7 +83,6 @@ class EditCampusContainer extends Component {
 				<Header/ >
 				<EditCampusView
 					campus = {this.props.campus}
-					handleChange = {this.handleChange}
 					handleSubmit = {this.handleSubmit}
 				/>
 			</div>
