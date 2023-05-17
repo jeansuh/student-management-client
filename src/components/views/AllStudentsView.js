@@ -13,6 +13,7 @@ const AllStudentsView = (props) => {
     return (
     <div>
       <p>There are no students.</p>
+      {/*Link to add new student*/}
       <Link to={`newstudent`}>
         <button>Add New Student</button>
       </Link>

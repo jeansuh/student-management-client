@@ -19,12 +19,14 @@ class NewCampusContainer extends Component {
 		};
 	}
 
+	//function to handle changes in form and update state
 	handleChange = event => {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
 	}
 
+	//Function to handle form submit
 	handleSubmit = async event => {
 		event.preventDefault();
 
