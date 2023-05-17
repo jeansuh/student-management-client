@@ -31,9 +31,16 @@ class EditStudentContainer extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
+
+        //Checks for input error
+        //Email has to have  valid form
+        //First and last name can't be empty
+        //GPA has to be a number and between 0 and 4
         let error = false;
         let errorMsg = "";
-        let regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        let regNum = /[+-]?([0-9]*[.])?[0-9]+/;
+        let regEmail = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
         if(!regEmail.test(event.target.email.value)){
             errorMsg += "Invalid email\n"
             error = true;
@@ -49,6 +56,12 @@ class EditStudentContainer extends Component {
             error = true;
         }
 
+        if((!regNum.test(event.target.gpa.value) || event.target.gpa.value < 0 || event.target.gpa.value > 4) && event.target.gpa.value !== "") {
+            errorMsg += "GPA has to be a number between 0 and 4";
+            error = true;
+        }
+
+        //If input error is caught, nulls submit and returns alert
         if(error){
             alert(errorMsg);
             return false;

@@ -40,6 +40,37 @@ class NewStudentContainer extends Component {
     handleSubmit = async event => {
         event.preventDefault();  // Prevent browser reload/refresh after submit.
 
+        let error = false;
+        let errorMsg = "";
+        let regNum = /[+-]?([0-9]*[.])?[0-9]+/;
+        let regEmail = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if(!regEmail.test(event.target.email.value)){
+            errorMsg += "Invalid email\n"
+            error = true;
+        }
+
+        if(!event.target.firstname.value){
+            errorMsg += "First name can't be empty\n"
+            error = true;
+        }
+
+        if(!event.target.lastname.value){
+            errorMsg += "Last name can't be empty\n"
+            error = true;
+        }
+
+        if((!regNum.test(event.target.gpa.value) || event.target.gpa.value < 0 || event.target.gpa.value > 4)&& event.target.gpa.value !== "") {
+            errorMsg += "GPA has to be a number between 0 and 4";
+            error = true;
+        }
+
+
+        if(error){
+            alert(errorMsg);
+            return false;
+        }
+
         let student = {
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,

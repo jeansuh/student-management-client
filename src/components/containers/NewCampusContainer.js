@@ -28,6 +28,26 @@ class NewCampusContainer extends Component {
 	handleSubmit = async event => {
 		event.preventDefault();
 
+		//Checks for input error
+		//If campus name or adress is empty, nulls the submit and returns alert messages accordingly
+	    let error = false;
+	    let errorMsg = "";
+
+	    if(!event.target.name.value){
+	        errorMsg += "Campus name can't be empty\n"
+	        error = true;
+	    }
+
+	    if(!event.target.address.value){
+	        errorMsg += "Address can't be empty\n"
+	        error = true;
+	    }
+
+	    if(error){
+	        alert(errorMsg);
+	        return false;
+	    }
+
 		let campus = {
 			name: this.state.name,
 			address: this.state.address,

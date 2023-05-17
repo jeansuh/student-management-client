@@ -39,6 +39,24 @@ class EditCampusContainer extends Component {
 	handleSubmit = async (event) => {
 		event.preventDefault();
 
+    let error = false;
+    let errorMsg = "";
+
+    if(!event.target.name.value){
+        errorMsg += "Campus name can't be empty\n"
+        error = true;
+    }
+
+    if(!event.target.address.value){
+        errorMsg += "Address can't be empty\n"
+        error = true;
+    }
+
+    if(error){
+        alert(errorMsg);
+        return false;
+    }
+
 		let campus ={
 			name: event.target.name.value,
 			address: event.target.address.value,
