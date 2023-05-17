@@ -34,7 +34,7 @@ const NewCampusView = (props) => {
 
   return (
     <div>
-      <h1>New Student</h1>
+      <h1>New Campus</h1>
 
       <div className={classes.root}>
         <div className={classes.formContainer}>
@@ -56,6 +56,11 @@ const NewCampusView = (props) => {
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
             <input type="text" name="description" onChange={(e) => handleChange(e)} />
+            <br/>
+            <br/>
+
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Image Url: </label>
+            <input type="text" name="imageUrl" onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 

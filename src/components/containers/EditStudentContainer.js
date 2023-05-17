@@ -17,6 +17,9 @@ class EditStudentContainer extends Component {
             firstname: "",
             lastname: "",
             campusId: null,
+            email: "",
+            gpa: null,
+            imageUrl: "",
             redirect: false,
             redirectId: null
         };
@@ -28,11 +31,36 @@ class EditStudentContainer extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
+        let error = false;
+        let errorMsg = "";
+        let regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(!regEmail.test(event.target.email.value)){
+            errorMsg += "Invalid email\n"
+            error = true;
+        }
+
+        if(!event.target.firstname.value){
+            errorMsg += "First name can't be empty\n"
+            error = true;
+        }
+
+        if(!event.target.lastname.value){
+            errorMsg += "Last name can't be empty\n"
+            error = true;
+        }
+
+        if(error){
+            alert(errorMsg);
+            return false;
+        }
 
         let student = {
             firstname: event.target.firstname.value,
             lastname: event.target.lastname.value,
             campusId: event.target.campusId.value,
+            email: event.target.email.value,
+            gpa: event.target.gpa.value,
+            imageUrl: event.target.imageUrl.value,
             id:this.props.student.id
         };
 
@@ -41,6 +69,9 @@ class EditStudentContainer extends Component {
         this.setState({
             firstname:"",
             lastname:"",
+            email: "",
+            gpa: null,
+            imageUrl: "",
             campusId:null,
             redirect:true,
         })

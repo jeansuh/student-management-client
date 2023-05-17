@@ -61,6 +61,21 @@ const EditStudentView = (props) => {
             <br/>
             <br/>
 
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
+            <input type="text" key={student.email} defaultValue={student.email} name="email"  />
+            <br/>
+            <br/>
+
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
+            <input type="text" key={student.gpa} defaultValue={student.gpa} name="gpa"  />
+            <br/>
+            <br/>
+
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>Student Profile Image: </label>
+            <input type="text" key={student.imageUrl} defaultValue={student.imageUrl} name="imageUrl"  />
+            <br/>
+            <br/>
+
             <Button variant="contained" color="primary" type="submit">
               Submit
             </Button>

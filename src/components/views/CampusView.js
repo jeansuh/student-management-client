@@ -14,16 +14,24 @@ const CampusView = (props) => {
     let msg = "There are no students enrolled at " + campus.name;
     return(
         <div>
+        <br/>
             <img src={campus.imageUrl} width = "150"/>
             <h1>{campus.name}</h1>
             <p>{campus.address}</p>
             <p>{campus.description}</p>
-            <p>{msg}</p>
+            <Link to={`/editcampus/${campus.id}`}>
+                <button style={{marginRight:"10px"}}>Edit Campus</button>
+            </Link>
             <Link to = {`/campuses`}>
                 <button onClick={() => {
                     props.deleteCampus(campus.id);
                 }}> Delete Campus </button>
             </Link>
+            <br/>
+            <p><b>{msg}</b></p>
+            <Link to={`/newstudent`}>
+                <button>Add New Student</button>
+            </Link><br/>
             <div>
                 <br />
                 <Link to={`/campuses`}>Go back</Link>
@@ -35,6 +43,7 @@ const CampusView = (props) => {
     // Render a single Campus view with list of its students
     return (
     <div>
+        <br/>
         <img src={campus.imageUrl} width = "150"/>
         <h1>{campus.name}</h1>
         <p>{campus.address}</p>

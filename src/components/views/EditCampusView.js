@@ -59,6 +59,11 @@ const EditCampusView = (props) => {
                         <br/>
                         <br/>
 
+                        <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Image Url: </label>
+                        <input type="text" key={campus.imageUrl} defaultValue={campus.imageUrl} name="imageUrl"  />
+                        <br/>
+                        <br/>
+
                         <Button variant="contained" color="primary" type="submit">
                             Submit
                         </Button>

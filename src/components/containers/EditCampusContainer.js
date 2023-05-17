@@ -17,6 +17,7 @@ class EditCampusContainer extends Component {
 			name: "",
 			address: "",
 			description: "",
+			imageUrl:"",
 			redirect: false,
 			redirectId: null
 		};
@@ -42,6 +43,7 @@ class EditCampusContainer extends Component {
 			name: event.target.name.value,
 			address: event.target.address.value,
 			description: event.target.description.value,
+			imageUrl: this.props.campus.imageUrl,
 			id: this.props.campus.id,
 		}
 		// let campus = {
@@ -57,6 +59,7 @@ class EditCampusContainer extends Component {
 			name: "",
 			address: "",
 			description: "",
+			imageUrl:"",
 			redirect: true,
 			redirectId: campus.id
 		})

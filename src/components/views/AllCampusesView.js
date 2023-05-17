@@ -27,6 +27,8 @@ const AllCampusesView = (props) => {
 
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
+          <br/>
+          <img src={campus.imageUrl} width="200"/>
           <Link to={`/campus/${campus.id}`}>
             <h2>{campus.name}</h2>
           </Link>
@@ -42,7 +44,7 @@ const AllCampusesView = (props) => {
           }}>
             Delete
             </button>
-          <hr/>
+          <br/><br/><hr/>
         </div>
       ))}
       <br/>
