@@ -10,7 +10,14 @@ import { Link } from "react-router-dom";
 const AllCampusesView = (props) => {
   // If there is no campus, display a message.
   if (!props.allCampuses.length) {
-    return <div>There are no campuses.</div>;
+    return (
+      <div>
+        <p>There are no campuses.</p>
+        <Link to={`newcampus`}>
+          <button>Add New Campus</button>
+        </Link>
+      </div>
+    );
   }
 
   // If there is at least one campus, render All Campuses view 
@@ -20,17 +27,31 @@ const AllCampusesView = (props) => {
 
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
+          <br/>
+          <img src={campus.imageUrl} width="200"/>
           <Link to={`/campus/${campus.id}`}>
             <h2>{campus.name}</h2>
           </Link>
           <h4>campus id: {campus.id}</h4>
           <p>{campus.address}</p>
           <p>{campus.description}</p>
-          <hr/>
+          {/*Link to edit campus*/}
+          <Link to={`/editcampus/${campus.id}`}>
+            <button style={{marginRight:"10px"}}>Edit</button>
+          </Link>
+          {/*Button to delete campus*/}
+          <button onClick={() => {
+            props.deleteCampus(campus.id);
+
+          }}>
+            Delete
+            </button>
+          <br/><br/><hr/>
         </div>
       ))}
       <br/>
-      <Link to={`/`}>
+      {/*Link to add new campus*/}
+      <Link to={`/newcampus`}>
         <button>Add New Campus</button>
       </Link>
       <br/><br/>
